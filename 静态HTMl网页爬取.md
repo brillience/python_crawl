@@ -1,3 +1,4 @@
+```py
 # coding=utf-8
 import re
 from bs4 import BeautifulSoup
@@ -54,3 +55,4 @@ def save(data):
 
 if __name__ == "__main__":
     main()
+```
