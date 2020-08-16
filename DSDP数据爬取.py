@@ -36,6 +36,8 @@ def download(data):
         print(temp_down_urls)
         download_urls.append(temp_down_urls)
     # 开始创建相应名字的文件夹，并将文件下载
+    if not os.path.exists('download_files'):
+        os.mkdir('download_files')
     for i in range(0, len(folder_name)):
         path = '.\\download_files\\'+folder_name[i]
         if not os.path.exists(path):
