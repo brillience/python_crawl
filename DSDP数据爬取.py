@@ -52,6 +52,7 @@ def download(data):
                 while 1:
                     try:
                         down = requests.get(urls[i] + download_urls[i][count], timeout=10)
+                        print(zip_name[count]+'正在下载......')
                         f.write(down.content)
                         print(zip_name[count] + '下载完毕！！！')
                         break
