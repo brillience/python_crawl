@@ -10,7 +10,7 @@ def main():
     baseurl = "https://mlp.ldeo.columbia.edu/logdb/scientific_ocean_drilling/result/"
     html = askurl(baseurl)
     data = getdate(html)
-    # save(data)
+    save(data)
     download(data)
 def download(data):
     # 第一步：提取出data列表内的所有二级网页的链接
@@ -48,7 +48,7 @@ def download(data):
         for count in range(0, len(zip_name)):
             with open(path+'\\'+zip_name[count], 'wb+') as f:
                 # 在这里设置超时机制,超时就五次重连
-                i = 0
+                times = 0
                 while 1:
                     try:
                         down = requests.get(urls[i] + download_urls[i][count], timeout=10)
@@ -56,9 +56,9 @@ def download(data):
                         print(zip_name[count] + '下载完毕！！！')
                         break
                     except requests.exceptions.RequestException as e:
-                        i += 1
+                        times += 1
                         print('正在重试！！！')
-                        if i >= 5:
+                        if times >= 5:
                             # 超时重连5次失败时
                             print(str(e))
                             print(zip_name[count] + '下载失败！！！')
@@ -96,15 +96,15 @@ def getdate(html):
             sub_data[3] += temp_str
         data.append(sub_data)
     return data
-# def save(data):
-#     headers = ['YEAR', 'PROGRAM', 'LEG/EXP', 'HOLE', 'LOCATION', 'OCEAN/SEA']
-#     with open("data_list.csv", "a+", newline='', encoding='utf-8') as f:
-#         writer = csv.writer(f)
-#         writer.writerow(headers)
-#         for i in data[2:]:
-#             writer.writerow(i)
-#         f.close()
-#     print("数据列表爬取完毕！！！")
+def save(data):
+    headers = ['YEAR', 'PROGRAM', 'LEG/EXP', 'HOLE', 'LOCATION', 'OCEAN/SEA']
+    with open("data_list.csv", "a+", newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(headers)
+        for i in data[2:]:
+            writer.writerow(i)
+        f.close()
+    print("数据列表爬取完毕！！！")
 
 if __name__ == "__main__":
     main()
