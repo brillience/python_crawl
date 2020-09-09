@@ -5,6 +5,7 @@ import urllib.request as urlreq
 import urllib.error as urlerr
 import csv
 import os
+import time
 import requests
 def main():
     baseurl = "https://mlp.ldeo.columbia.edu/logdb/scientific_ocean_drilling/result/"
@@ -38,7 +39,7 @@ def download(data):
     # 开始创建相应名字的文件夹，并将文件下载
     if not os.path.exists('download_files'):
         os.mkdir('download_files')
-    for i in range(0, len(folder_name)):
+    for i in range(647, len(folder_name)):
         path = '.\\download_files\\'+folder_name[i]
         if not os.path.exists(path):
             os.mkdir(path)
@@ -48,15 +49,18 @@ def download(data):
             zip_name.append(j.split('/')[-1])
         print(zip_name)
         for count in range(0, len(zip_name)):
-            with open(path+'\\'+zip_name[count], 'wb+') as f:
+            with open(path+'\\'+zip_name[count], 'wb') as f:
                 # 在这里设置超时机制,超时就五次重连
                 times = 0
                 while 1:
                     try:
-                        down = requests.get(urls[i] + download_urls[i][count], timeout=10)
+                        down = requests.get(urls[i] + download_urls[i][count], stream=True)
                         print(zip_name[count]+'正在下载......')
-                        f.write(down.content)
+                        for chunk in down.iter_content(chunk_size=512):
+                            if chunk:
+                                f.write(chunk)
                         print(zip_name[count] + '下载完毕！！！')
+                        time.sleep(60)
                         break
                     except requests.exceptions.RequestException as e:
                         times += 1
