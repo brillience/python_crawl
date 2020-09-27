@@ -18,7 +18,7 @@ class DoiDownSpider(scrapy.Spider):
             host="localhost",
             port=3306,
             user="root",
-            passwd="zhang111",
+            passwd="xxxxxx",
             db="web_of_science")
         self.cursor = self.connect.cursor()
         self.cursor.execute("select doi from wos_document;")

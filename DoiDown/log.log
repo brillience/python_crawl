@@ -1,3 +1,0 @@
-2020-09-23 17:02:23 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://cyber.bban.top/MTAuMTAwNy9zMTA5OTQtMDE4LTU3NjItOQ==/farooq2018.pdf?download=true> (failed 3 times): 503 Service Unavailable
-2020-09-23 17:03:18 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://cyber.bban.top/MTAuMTAwNy9zMTA5OTQtMDE4LTU3NzAtOQ==/eggeling2018.pdf?download=true> (failed 3 times): 503 Service Unavailable
-2020-09-23 17:03:46 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://cyber.bban.top/MTAuMTAwNy9zMTA5OTQtMDE4LTU3NzEtOA==/yan2018.pdf?download=true> (failed 3 times): 503 Service Unavailable
