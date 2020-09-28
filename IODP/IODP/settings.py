@@ -17,7 +17,10 @@ NEWSPIDER_MODULE = 'IODP.spiders'
 #USER_AGENT = 'IODP (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+USER_AGENT_LIST = [
+
+]
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
