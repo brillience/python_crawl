@@ -12,15 +12,13 @@ BOT_NAME = 'IODP'
 SPIDER_MODULES = ['IODP.spiders']
 NEWSPIDER_MODULE = 'IODP.spiders'
 
-
+LOG_LEVEL = 'ERROR'
+LOG_FILE = './log.log'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'IODP (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 Edg/85.0.564.63'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
-USER_AGENT_LIST = [
-
-]
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -28,7 +26,7 @@ USER_AGENT_LIST = [
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 5
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -53,9 +51,9 @@ USER_AGENT_LIST = [
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'IODP.middlewares.IodpDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'IODP.middlewares.IodpDownloaderMiddleware': 543
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -65,9 +63,9 @@ USER_AGENT_LIST = [
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'IODP.pipelines.IodpPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'IODP.pipelines.InitPipeline': 200
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
