@@ -15,9 +15,6 @@ class IodpDownloaderMiddleware:
     # scrapy acts as if the downloader middleware does not modify the
     # passed objects.
 
-    @classmethod
-
-
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
 
@@ -25,7 +22,8 @@ class IodpDownloaderMiddleware:
         # - return a Response object
         # - return a Request object
         # - or raise IgnoreRequest
-        spider.chrome.get(request.url)
-        time.sleep(25)    # 等待完整加载ajax后的页面
+        if request.meta['get']:
+            spider.chrome.get(request.url)
+        time.sleep(50)    # 等待完整加载ajax后的页面
         page_text = spider.chrome.page_source
         return HtmlResponse(url=request.url,body=page_text, encoding='utf-8', request=request)
