@@ -15,11 +15,11 @@ class DoiDownSpider(scrapy.Spider):
 
     def start_requests(self):
         self.connect = pymysql.connect(
-            host="localhost",
+            host="192.168.245.128",
             port=3306,
             user="root",
-            passwd="xxxxxx",
-            db="web_of_science")
+            passwd="123456",
+            db="wos")
         self.cursor = self.connect.cursor()
         self.cursor.execute("select doi from wos_document;")
 

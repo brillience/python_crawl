@@ -21,12 +21,12 @@ ROBOTSTXT_OBEY = False
 LOG_LEVEL = 'ERROR'
 LOG_FILE = './log.log'
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-# CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 5
+DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
@@ -62,6 +62,11 @@ DOWNLOAD_DELAY = 5
 # }
 
 # Configure item pipelines
+ITEM_PIPELINES  =  { 
+	# 'scrapy.pipelines.files.FilesPipeline': 200 ,
+	'DoiDown.pipelines.fileDown' : 300,
+
+		}
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 FILES_STORE = './PDF'
 # Enable and configure the AutoThrottle extension (disabled by default)
