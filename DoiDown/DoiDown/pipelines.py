@@ -12,20 +12,20 @@ from scrapy.pipelines.files import FilesPipeline
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-class initPipeline:
-    def open_spider(self, spider):
-        print('*' * 10 + '开始下载...' + '*' * 10)
-        options = Options()
-        options.add_argument('--headless')
-        options.add_argument('--disable_gpu')
-        self.chrome = webdriver.Chrome(chrome_options=options)
+# class initPipeline:
+#     def open_spider(self, spider):
+#         print('*' * 10 + '开始下载...' + '*' * 10)
+#         options = Options()
+#         options.add_argument('--headless')
+#         options.add_argument('--disable_gpu')
+#         self.chrome = webdriver.Chrome(chrome_options=options)
 
-    def process_item(self, item, spider):
-        return item
+#     def process_item(self, item, spider):
+#         return item
 
-    def close_spider(self, spider):
-        print('*' * 10 + '爬取完毕' + '*' * 10)
-        self.chrome.quit()
+#     def close_spider(self, spider):
+#         print('*' * 10 + '爬取完毕' + '*' * 10)
+#         self.chrome.quit()
 
 class fileDown(FilesPipeline):
     def get_media_requests(self, item, info):
