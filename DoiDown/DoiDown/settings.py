@@ -63,8 +63,8 @@ DOWNLOAD_DELAY = 1
 
 # Configure item pipelines
 ITEM_PIPELINES  =  { 
-	# 'scrapy.pipelines.files.FilesPipeline': 200 ,
-	'DoiDown.pipelines.fileDown' : 300,
+	'scrapy.pipelines.files.FilesPipeline': 200 ,
+	# 'DoiDown.pipelines.fileDown' : 300,
 
 		}
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
